@@ -3,10 +3,23 @@
     #   1. json形式のものだけ
     # 2. 1.のリスト内をtempに移動する
     
-    $target = $pwd.Path + "\target\target.json"
     $outputDir = $pwd.Path + "\output"
+    $targetDir = $pwd.Path + "\target"
 
-    move $target $outputDir
+    # move $target $outputDir
+    $files = getFiles $targetDir
+    echo $files
+}
+
+function getFiles($targetDir) {
+    $files = Get-ChildItem $targetDir
+    # echo $files
+    $returnFiles = @()
+    for ($i = 0; $i -lt $files.Length; $i++) {
+        $fileName = $targetDir + "\" + $files[$i].Name
+        $returnFiles += $fileName
+    }
+    return $returnFiles
 }
 
 
