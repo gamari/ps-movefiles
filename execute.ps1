@@ -1,6 +1,7 @@
 ﻿function Main {   
-    $outputDir = $pwd.Path + "\output"
-    $targetDir = $pwd.Path + "\target"
+    # TODO 環境変数から取得するようにする
+    $targetDir = "C:\Users\tamay\Downloads";
+    $outputDir = "C:\Users\tamay\Desktop\home\download\exe"
 
     $files = getFiles $targetDir
     moveFiles $files $outputDir
