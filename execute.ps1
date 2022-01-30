@@ -17,8 +17,14 @@ function getFiles($targetDir) {
     $returnFiles = @()
     for ($i = 0; $i -lt $files.Length; $i++) {
         $fileName = $targetDir + "\" + $files[$i].Name
-        $returnFiles += $fileName
+        $isJsonFile = $fileName -match "json$"
+
+        if ($isJsonFile) {
+            $returnFiles += $fileName
+        }
+
     }
+
     return $returnFiles
 }
 
