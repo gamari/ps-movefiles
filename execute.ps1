@@ -17,15 +17,24 @@ function getFiles($targetDir) {
     $returnFiles = @()
     for ($i = 0; $i -lt $files.Length; $i++) {
         $fileName = $targetDir + "\" + $files[$i].Name
-        $isJsonFile = $fileName -match "json$"
+        $isValidExtension = validExtension $fileName
 
-        if ($isJsonFile) {
+        if ($isValidExtension) {
             $returnFiles += $fileName
         }
 
     }
 
     return $returnFiles
+}
+
+function validExtension($fileName) {
+    # 指定したい拡張子はここに追加
+    $isValid = $false
+    if ($fileName -match "exe$") {
+        $isValid = $true
+    }
+    return $isValid
 }
 
 
